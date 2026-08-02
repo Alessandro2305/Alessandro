@@ -207,6 +207,15 @@
     <!-- Scripts movidos para dentro do BODY no final do arquivo -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Registra o Service Worker para liberar o botão "Instalar App"
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker Registrado com sucesso!'))
+                .catch((err) => console.log('Erro ao registrar Service Worker:', err));
+        }
+    </script>
 </body>
 
 </html>

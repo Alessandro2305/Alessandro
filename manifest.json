@@ -1,21 +1,25 @@
 {
-  "name": "Oficina Volante - Requisição de Material",
+  "name": "Oficina Volante - UST",
   "short_name": "Oficina Volante",
-  "description": "Sistema de Requisição de Material UST",
+  "description": "Sistema de Requisição de Material - PCM UST",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
   "icons": [
     {
-      "src": "img/icon-192.png",
+      "src": "./imagem/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "img/icon-512.png",
+      "src": "./imagem/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
