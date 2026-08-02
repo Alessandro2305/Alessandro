@@ -282,6 +282,13 @@ input[type="number"]::-webkit-outer-spin-button {
     background: #ffffff;
 }
 
+.table-responsive {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 15px;
+}
+
 .area-tabela-final .informacao {
     display: block;
     background-color: #64748b;
@@ -298,7 +305,6 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.8rem;
-    min-width: 480px;
 }
 
 .tabela thead {
