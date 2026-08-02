@@ -414,7 +414,27 @@ function adicionarPeca() {
     return;
   }
 
+  // ==========================================
+  // VALIDAÇÃO DE CÓDIGO DUPLICADO
+  // ==========================================
   const tbody = document.getElementById("tabelaintens");
+  const linhasExistentes = tbody.querySelectorAll("tr");
+  
+  for (let i = 0; i < linhasExistentes.length; i++) {
+    // Pega o texto da 2ª coluna (td:nth-child(2)), onde fica o CÓDIGO
+    const codigoNaTabela = linhasExistentes[i].children[1].textContent.trim();
+    
+    if (codigoNaTabela.toLowerCase() === codigo.toLowerCase()) {
+      alert(`A peça com o código "${codigo}" já foi adicionada na lista!`);
+      codigoInput.value = "";
+      descricaoInput.value = "";
+      quantidadeInput.value = "";
+      descricaoInput.readOnly = false;
+      codigoInput.focus();
+      return; // Interrompe a função e não adiciona a peça repetida
+    }
+  }
+
   const linha = document.createElement("tr");
 
   linha.innerHTML = `
