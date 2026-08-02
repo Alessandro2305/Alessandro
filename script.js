@@ -9,7 +9,7 @@ let equipamentosValidos = []; // Lista de códigos de Equipamentos válidos
 let contador = 1;             // Contador da tabela de peças
 
 // ⚠️ SUBS-TITUIR PELO GID REAL DA ABA EQUIPAMENTO NO GOOGLE SHEETS
-const GID_EQUIPAMENTO = "1995966328"; 
+const GID_EQUIPAMENTO = "1995966328";
 
 // ==========================================
 // INICIALIZAÇÃO DA PÁGINA E EVENTOS
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-// Validação da FROTA -> Puxa DEPÓSITO e FRENTE
+  // Validação da FROTA -> Puxa DEPÓSITO e FRENTE
   if (frotaInput) {
     frotaInput.addEventListener("change", function () {
       const frotaDigitada = String(this.value).trim().toLowerCase();
@@ -329,7 +329,7 @@ function processarEquipamentos(csvTexto) {
   for (let i = 1; i < linhas.length; i++) {
     const linha = linhas[i].trim();
     if (!linha) continue;
-    
+
     const colunas = parseCSVLine(linha);
     if (colunas.length >= 1 && colunas[0]) {
       equipamentosValidos.push(String(colunas[0]).trim());
@@ -535,4 +535,23 @@ async function handleSubmit(event) {
       btnSubmit.innerHTML = '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar Relatório';
     }
   }
+}
+
+
+// Localiza o botão Sair
+const btnSair = document.querySelector('.btn-danger') || document.getElementById('btn-sair');
+
+if (btnSair) {
+  btnSair.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Pergunta ao usuário se ele realmente deseja sair/limpar
+    if (confirm("Deseja realmente sair e limpar o formulário?")) {
+      // Opção A: Apenas recarrega a página limpa (recomendado para PWA)
+      window.location.href = './index.html';
+
+      // Se preferir fechar a aba em navegadores normais:
+      window.close();
+    }
+  });
 }
