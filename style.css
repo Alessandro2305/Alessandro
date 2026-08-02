@@ -437,3 +437,29 @@ body.dark input, body.dark select, body.dark textarea {
         width: 100%;
     }
 }
+
+/* Trava a tela para não rolar pro lado no celular */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Deixa o container da tabela com rolagem interna suave */
+.table-responsive, 
+div:has(table) {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ajusta o tamanho da tabela e dos textos em telas pequenas */
+@media (max-width: 600px) {
+  table {
+    font-size: 12px; /* Diminui a fonte da tabela no celular */
+  }
+
+  table th, table td {
+    padding: 6px 4px !important; /* Diminui o espaçamento interno */
+    white-space: nowrap; /* Impede que o texto quebre linhas de forma feia */
+  }
+}
