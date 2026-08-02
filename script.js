@@ -538,20 +538,25 @@ async function handleSubmit(event) {
 }
 
 
-// Localiza o botão Sair
-const btnSair = document.querySelector('.btn-danger') || document.getElementById('btn-sair');
+const btnSair = document.getElementById('btnSair');
 
 if (btnSair) {
   btnSair.addEventListener('click', function (e) {
     e.preventDefault();
 
-    // Pergunta ao usuário se ele realmente deseja sair/limpar
-    if (confirm("Deseja realmente sair e limpar o formulário?")) {
-      // Opção A: Apenas recarrega a página limpa (recomendado para PWA)
-      window.location.href = './index.html';
-
-      // Se preferir fechar a aba em navegadores normais:
+    if (confirm("Deseja realmente fechar o aplicativo?")) {
+      // 1. Tenta fechar a janela/aba/PWA diretamente
       window.close();
+
+      // 2. Se o navegador/sistema bloquear o fechamento (comum em mobile/PWA),
+      // redireciona para uma tela em branco ou limpa o formulário e avisa
+      setTimeout(() => {
+        // Redireciona para o index limpo
+        window.location.href = './index.html';
+        
+        // Exibe o aviso para o usuário fechar a aba/app no botão do celular
+        alert("Para fechar completamente o aplicativo, feche a aba do seu navegador ou deslize o app na tela do celular.");
+      }, 300);
     }
   });
 }
