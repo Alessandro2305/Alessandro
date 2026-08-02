@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icon-192.png" type="image/png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>OFICINA VOLANTE</title>
+</head>
+
+<body>
+    <section class="container">
+
+        <form id="formulario">
+
+            <div class="topo">
+                <img src="img/Logo ust.png" alt="logo da empresa">
+
+                <div class="info">
+                    <h1>REQUISIÇÃO DE MATERIAL</h1>
+                    <p>Oficina Volante</p>
+                </div>
+
+                <div class="trilho" id="trilho" title="Alternar Tema">
+                    <div class="indicador"></div>
+                </div>
+            </div>
+
+            <div class="header-topo">
+                <div class="input-container">
+                    <i class="fa-solid fa-house-chimney-user"></i>
+                    <label for="filial">Filial</label>
+                    <div class="input-box-un">
+                        <!-- Correção: fecho de aspas no placeholder -->
+                        <input type="text" id="filial" name="filial" list="lista-filiais" placeholder="Filial">
+
+                        <!-- Correção: removida a datalist duplicada que estava vazia -->
+                        <datalist id="lista-filiais">
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                            <option value="15"></option>
+                            <option value="16"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa-solid fa-house-chimney-user"></i>
+                    <label for="unidade">Unidade / Cidade</label>
+                    <div class="input-box-un2">
+                        <input id="unidade" type="text" name="unidade" placeholder="Ex: Matriz / Cidade" required
+                            readonly>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <label for="frota">Frota Oficina Volante</label>
+                    <div class="input-box">
+                        <input id="frota" type="text" name="frota" placeholder="Ex: 123456" required>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="frente"><i class="fa-solid fa-map-location-dot"></i> Frente</label>
+                    <div class="input-box">
+                        <input id="frente" type="text" name="frente" placeholder="Área" readonly>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <label for="deposito">Depósito</label>
+                    <div class="input-box">
+                        <input id="deposito" type="text" name="deposito" placeholder="Ex: 01" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-linha-unica">
+                <div class="input-container">
+                    <label for="equipamento"><i class="fa-solid fa-truck"></i> Frota do veículo</label>
+                    <div class="input-box">
+                        <input id="equipamento" type="text" name="equipamento" placeholder="Ex: 123456" required>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="data"><i class="fa-solid fa-calendar-days"></i> Data</label>
+                    <div class="input-box">
+                        <input id="data" type="date" name="data" required>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="horario"><i class="fa-solid fa-clock"></i> Horário</label>
+                    <div class="input-box">
+                        <input id="horario" type="time" name="horario" required>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="os"><i class="fa-solid fa-clipboard"></i> Nº OS</label>
+                    <div class="input-box">
+                        <input id="os" type="text" name="os" placeholder="Nº da OS" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-info">
+                <div class="input-container">
+                    <i class="fa-solid fa-image-portrait"></i>
+                    <label for="cracha">Crachá</label>
+                    <div class="input-box-maior">
+                        <input id="cracha" type="text" name="cracha" placeholder="Ex: 123456" required>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa-solid fa-user-check"></i>
+                    <label for="nome">Nome do Mecânico</label>
+                    <div class="input-box-maior-2">
+                        <input id="nome" type="text" name="nome" placeholder="Ex: Alessandro Mançano" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pecas-form">
+                <div class="header">
+                    <div class="input-container">
+                        <i class="fa-solid fa-book-open"></i>
+                        <label for="codigo">Código</label>
+                        <div class="input-box">
+                            <input type="text" id="codigo" placeholder="Código da peça">
+                        </div>
+                    </div>
+
+                    <div class="input-container">
+                        <i class="fa-solid fa-gear"></i>
+                        <label for="descricao">Descrição</label>
+                        <div class="input-box-maior-2">
+                            <input type="text" id="descricao" placeholder="Descrição da peça">
+                        </div>
+                    </div>
+
+                    <div class="input-container">
+                        <i class="fa-solid fa-list-ol"></i>
+                        <label for="quantidade">Quantidade</label>
+                        <div class="input-box">
+                            <input type="number" id="quantidade" placeholder="Quantidade" min="1">
+                        </div>
+                    </div>
+
+                    <div class="add">
+                        <button type="button" id="btnAdd">
+                            <i class="fa-solid fa-plus"></i> ADICIONAR PEÇAS
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="area-tabela-final">
+                <span class="informacao">PEÇAS REGISTRADAS:</span>
+
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>CÓDIGO</th>
+                            <th>DESCRIÇÃO</th>
+                            <th>QUANTIDADE</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaintens"></tbody>
+                </table>
+            </div>
+
+            <div class="botaofinal">
+                <div class="enviar">
+                    <button type="submit" id="btnEnviar">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Relatório
+                    </button>
+                </div>
+
+                <div class="sair">
+                    <a href="interface.html">
+                        <button type="button" id="btnSair"><i
+                                class="fa-solid fa-arrow-right-from-bracket"></i>Sair</button>
+                    </a>
+                </div>
+            </div>
+
+        </form>
+
+
+
+        <h2>© 2026 Software Soluções Integradas - PCM UST</h2>
+
+    </section>
+
+    <!-- Scripts movidos para dentro do BODY no final do arquivo -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,439 @@
+/* ==========================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #eef2f6;
+    color: #1e293b;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ==========================================
+   CONTAINER PRINCIPAL
+   ========================================== */
+.container {
+    width: 100%;
+    max-width: 780px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #cbd5e1;
+    padding: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ==========================================
+   TOPO (LOGO, TÍTULO E TEMA)
+   ========================================== */
+.topo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.topo img {
+    max-height: 60px;
+    width: auto;
+    max-width: 40%;
+    object-fit: contain;
+}
+
+.topo .info {
+    text-align: center;
+    flex: 1;
+}
+
+.topo h1 {
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.topo p {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* ==========================================
+   INPUTS E LABELS (ESTILO PADRÃO)
+   ========================================== */
+.input-container {
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    min-width: 0; /* Previne estouro no Grid/Flexbox */
+}
+
+/* Força os ícones e rótulos a ficarem na mesma linha alinhados */
+.input-container i {
+    font-size: 0.82rem;
+    color: #334155;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.input-box, .input-box-un, .input-box-un2, .input-box-maior, .input-box-maior-2 {
+    width: 100%;
+}
+
+input, select, textarea {
+    width: 100%;
+    height: 38px;
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.83rem;
+    color: #0f172a;
+    background-color: #f8fafc;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: #ffffff;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ==========================================
+   ESTRUTURA DAS LINHAS DO FORMULÁRIO (GRID RESPONSIVO)
+   ========================================== */
+
+/* Linha 1: Filial | Unidade | Frota Volante | Frente | Depósito */
+.header-topo {
+    display: grid !important;
+    grid-template-columns: 0.8fr 1.5fr 1.2fr 1fr 0.8fr !important;
+    gap: 8px !important;
+    align-items: end !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+}
+
+/* Linha 2: Frota do veículo | Data | Horário | Nº OS */
+.header-linha-unica {
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr !important;
+    gap: 8px !important;
+    align-items: end !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+}
+
+/* Linha 3: Crachá | Nome do Mecânico */
+.header-info {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr !important;
+    gap: 8px !important;
+    align-items: end !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+}
+
+/* Linha 4: Área das Peças (Código | Descrição | Quantidade | Botão) */
+.pecas-form .header {
+    display: grid !important;
+    grid-template-columns: 1.1fr 1.8fr 0.9fr auto !important;
+    gap: 8px !important;
+    align-items: end !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+}
+
+/* ==========================================
+   BOTÕES E AÇÕES
+   ========================================== */
+
+/* Botão Adicionar Peças */
+.add {
+    width: auto;
+    margin: 0;
+}
+
+.add button {
+    height: 38px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.25);
+    transition: all 0.2s ease;
+}
+
+.add button:hover {
+    background: linear-gradient(180deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+}
+
+/* Botões do Rodapé */
+.botaofinal {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.enviar button, .sair button {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.enviar button {
+    height: 44px;
+    background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+}
+
+.enviar button:hover {
+    background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-1px);
+}
+
+.sair a {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+}
+
+.sair button {
+    margin-top: 10px;
+    height: 42px;
+    background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.25);
+}
+
+.sair button:hover {
+    background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   TABELA DE PEÇAS
+   ========================================== */
+.area-tabela-final {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+}
+
+.area-tabela-final .informacao {
+    display: block;
+    background-color: #64748b;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-align: center;
+    padding: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    min-width: 480px;
+}
+
+.tabela thead {
+    background-color: #94a3b8;
+    color: #ffffff;
+}
+
+.tabela th {
+    padding: 8px 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    border-right: 1px solid #cbd5e1;
+    text-align: center;
+}
+
+.tabela th:last-child {
+    border-right: none;
+}
+
+.tabela td {
+    padding: 8px 6px;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    color: #334155;
+    text-align: center;
+}
+
+.tabela td:last-child {
+    border-right: none;
+}
+
+.tabela tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.btnExcluir, .btn-excluir {
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnExcluir:hover, .btn-excluir:hover {
+    background-color: #b91c1c;
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
+h2 {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+.trilho {
+    width: 40px;
+    height: 20px;
+    background-color: #cbd5e1;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.trilho .indicador {
+    width: 14px;
+    height: 14px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+}
+
+.trilho.dark {
+    background-color: #3b82f6;
+}
+
+.trilho.dark .indicador {
+    transform: translateX(20px);
+}
+
+body.dark {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+body.dark .container {
+    background-color: #1e293b;
+    border-color: #334155;
+}
+
+body.dark label, body.dark .input-container i, body.dark h2 {
+    color: #cbd5e1;
+}
+
+body.dark input, body.dark select, body.dark textarea {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+/* ==========================================
+   ADAPTAÇÃO RESPONSIVA PARA DISPOSITIVOS MÓVEIS
+   ========================================== */
+@media (max-width: 620px) {
+    .header-topo, .header-linha-unica {
+        grid-template-columns: 1fr 1fr !important; /* Em telas móveis vira 2 colunas organizadas */
+    }
+
+    .header-info {
+        grid-template-columns: 1fr !important;
+    }
+
+    .pecas-form .header {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .add {
+        grid-column: span 2;
+    }
+
+    .add button {
+        width: 100%;
+    }
+}
