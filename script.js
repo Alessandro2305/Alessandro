@@ -580,3 +580,72 @@ if (btnSair) {
     }
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//1. Como funciona a lógica da integração
+//O operador digita o Nº da OS e o número da Frota no aplicativo.
+
+//Quando ele sai do campo da OS (blur) ou clica em um botão "Validar OS", o JavaScript dispara uma requisição (fetch) para o servidor do sistema da empresa.
+
+//O sistema da empresa consulta o banco de dados e retorna se a OS é válida (e se pertence àquela frota).
+
+//Se existir: O campo fica verde (validado) e liberta o preenchimento das peças.
+
+//Se não existir: O sistema exibe um alerta, limpa/bloqueia o campo e impede o envio do formulário.
+
+//2. Exemplo prático de implementação no script.js
+//Abaixo está o código que você pode adaptar no seu script.js. Supondo que a empresa te forneça um endpoint de API (ex: [https://api.empresa.com.br/validar-os](https://api.empresa.com.br/validar-os)):
+
+
+// Localiza os campos de Frota e OS
+const inputFrota = document.getElementById("frota"); // ajuste o ID se necessário
+const inputOS = document.getElementById("os");       // ajuste o ID se necessário
+
+// Dispara a validação quando o usuário termina de digitar o Nº da OS
+inputOS.addEventListener("blur", async function () {
+  const osValor = inputOS.value.trim();
+  const frotaValor = inputFrota ? inputFrota.value.trim() : "";
+
+  if (!osValor) return;
+
+  try {
+    // 1. Faz a chamada para a API do sistema da empresa
+    const response = await fetch(`https://api.empresa.com.br/validar-os?os=${osValor}&frota=${frotaValor}`);
+    const data = await response.json();
+
+    // 2. Verifica a resposta da API (ex: { existe: true } ou { existe: false })
+    if (data.existe) {
+      // OS Válida: Aplica feedback visual positivo
+      inputOS.style.borderColor = "#10b981"; // Verde
+      inputOS.dataset.valida = "true";
+    } else {
+      // OS Inválida
+      alert(`A Ordem de Serviço (OS) Nº "${osValor}" não foi encontrada no sistema para a frota digitada.`);
+      inputOS.value = "";
+      inputOS.style.borderColor = "#ef4444"; // Vermelho
+      inputOS.dataset.valida = "false";
+      inputOS.focus();
+    }
+  } catch (error) {
+    console.error("Erro ao validar OS:", error);
+    // Caso o servidor da empresa esteja fora do ar ou sem internet
+    alert("Não foi possível conectar ao sistema de validação de OS no momento.");
+  }
+});
